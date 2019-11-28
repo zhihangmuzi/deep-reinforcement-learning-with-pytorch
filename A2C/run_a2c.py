@@ -65,6 +65,9 @@ for episode in range(MAX_EPISODE):
         steps.append(episode + 1)
         test_results.append(result / 10)
 
+if tensorboard_flag:
+    writer.close()
+
 
 
 
