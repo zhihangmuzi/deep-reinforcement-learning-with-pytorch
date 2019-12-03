@@ -29,7 +29,17 @@ for episode in range(MAX_EPISODE):
         trans = Transition(state, action, reward, action_log_prob, next_state)
         if render:
             env.render()
-        if ppo.store_transition(trans):
+        # if ppo.store_transition(trans):
+        #     ppo.update()
+        
+        # _ = ppo.store_transition(trans)
+        #
+        # if (step+1) % ppo.batch_size == 0 or step == (200 - 1):
+        #     ppo.update()
+        
+        _ = ppo.store_transition(trans)
+
+        if step == (200 - 1) or done:
             ppo.update()
         score += reward
         state = next_state
